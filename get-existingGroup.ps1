@@ -1,6 +1,5 @@
 # connect to ms graph
 Connect-MgGraph
-
 # fetching AWS groups and extracting suffixes
 $groups = Get-MgGroup -Filter "startswith(displayname, 'aad-role-aws-')" 
 
