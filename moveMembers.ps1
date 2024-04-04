@@ -28,7 +28,7 @@ foreach ($mapping in $groupMappings) {
     }
     
     # Get members of the old group
-    $oldGroupId =[string]$oldGroup.Id
+    $oldGroupId = [string]$oldGroup.Id
     $members = Get-MgGroupMember -GroupId $oldGroupId
 
     foreach ($member in $members) {
@@ -36,7 +36,8 @@ foreach ($mapping in $groupMappings) {
             # Copy each member to the new group
             New-MgGroupMember -GroupId $newGroup.Id -DirectoryObjectId $member.Id
             Write-Host "Copied member $($member.Id) to new group: $newGroupName"
-        } catch {
+        }
+        catch {
             Write-Host "Failed to copy member $($member.Id) to $newGroupName. Error: $_"
         }
     }
